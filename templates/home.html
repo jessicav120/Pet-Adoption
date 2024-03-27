@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{%block title%} Home {%endblock%}
+
+{% block header %} Happy Hearts Pet Rescue {% endblock %}
+
+{%block content%}
+<div class="text-center">
+    <a href='/add' class="btn btn-success">Add a Pet</a>
+</div>
+
+<div class='row row-cols-4 g-3'>
+
+        {%for pet in pets%}
+        <div class='col'>
+            <div class="card h-100 m-2">
+                <img src={{pet.photo_url}} alt={{pet.name}} class='card-img-top'>
+
+                <div class='card-body'>
+                    <h4 class="card-title">{{pet.name}}</h4>
+                    <p class="card-text">
+                        {% if pet.available %}
+                        <b>Available</b>
+                        {% else %}
+                        Unavailable
+                        {% endif %}
+                    </p>
+                    <a href="/{{pet.id}}" class="card-link btn btn-primary">View Pet</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+{% endblock %}

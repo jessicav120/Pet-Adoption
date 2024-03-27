@@ -1,0 +1,23 @@
+{{ form.hidden_tag() }}
+
+{% for field in form if field.widget.input_type != 'hidden' %}
+                                
+<div class="form-group">
+    <p>
+        {{field.label}}
+                            
+        {% if field.type=='IntegerField' %}
+            {{field(class_='form-control', placeholder=("Max: 30"))}}
+        {% elif field.type=='BooleanField' %}
+            {{field}}
+        {% else %}
+            {{field(class_='form-control')}}
+        {% endif %}
+
+        {% for err in field.errors %}
+            {{err}}
+        {% endfor %}
+    </p>
+</div>
+
+{% endfor %}

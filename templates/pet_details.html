@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{%block title%} {{pet.name}} {%endblock%}
+
+{% block header %} Say Hello to {{pet.name}}! {% endblock %}
+
+{%block content%}
+
+<div class="row">
+
+    <div class="col-md-4 text-center">
+        <img src={{pet.photo_url}} alt={{pet.name}} class='img-fluid'>
+    </div>
+    
+   <div class='col'>
+     <p>
+        <h2 class='display-5'>{{pet.name}}</h4>
+        Species: {{pet.species}}
+        <br>
+        Age: {{pet.age}}
+     </p>
+     <p>
+        <i>{{pet.notes}}</i>
+    </p>
+     <p>
+        {% if pet.available %}
+        <p><b>I am available for adoption!<b></p>
+        {% else %}
+        <p><b>I've found my forever home!</b></p>
+        {% endif %}
+     </p>
+   </div>
+
+</div>
+<a href="/" class="btn btn-outline-primary">Return</a>
+<hr>
+<div class='row'>
+    <h4>UPDATE PET:</h4>
+    <form action="/{{pet.id}}" method='POST'>
+        {% include "form_base.html" %}
+        <button class="btn btn-primary">Update</button>
+    </form>
+</div>
+
+
+{% endblock %}
