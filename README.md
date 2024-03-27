@@ -1,3 +1,3 @@
 ## Happy Hearts Pet Rescue
 
-A simple site with some bootstrap styling, using Flask-WTF.
+A simple site with some bootstrap styling. Made using Flask-WTF.
